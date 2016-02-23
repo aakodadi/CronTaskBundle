@@ -83,7 +83,7 @@ class CronScheduler {
         $cron->start();
 
         $handle = fopen($this->periodic_json_file, 'w');
-        fwrite($handle, json_decode($this->periodic_crons_sleep_time));
+        fwrite($handle, json_encode($this->periodic_crons_sleep_time));
         fclose($handle);
     }
 
@@ -98,10 +98,9 @@ class CronScheduler {
         $cron = new Cron($this->dispatcher, $name, $sleep_time);
         $this->crons[$name] = $cron;
         $this->simple_crons_datetime[$name] = $datetime;
-        $cron->start();
         
         $handle = fopen($this->simple_json_file, 'w');
-        fwrite($handle, json_decode($this->simple_crons_datetime));
+        fwrite($handle, json_encode($this->simple_crons_datetime));
         fclose($handle);
     }
 
@@ -136,11 +135,11 @@ class CronScheduler {
         }
 
         $handle = fopen($this->simple_json_file, 'w');
-        fwrite($handle, json_decode($this->simple_crons_datetime));
+        fwrite($handle, json_encode($this->simple_crons_datetime));
         fclose($handle);
 
         $handle = fopen($this->periodic_json_file, 'w');
-        fwrite($handle, json_decode($this->periodic_crons_sleep_time));
+        fwrite($handle, json_encode($this->periodic_crons_sleep_time));
         fclose($handle);
 
         $this->ran = false;
