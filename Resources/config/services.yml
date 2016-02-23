@@ -1,0 +1,8 @@
+parameters:
+    akodakim.cron_task.simple_cron_json: "once.json"
+    akodakim.cron_task.periodic_cron_json: "period.json"
+    
+services:
+    akodakim.cron_task.cron_scheduler:
+        class: Akodakim\CronTaskBundle\Scheduler\CronScheduler
+        arguments: [%akodakim.cron_task.simple_cron_json%, %akodakim.cron_task.periodic_cron_json%]

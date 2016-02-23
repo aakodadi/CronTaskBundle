@@ -1,0 +1,3 @@
+akodakim_cron_task_homepage:
+    path:     /
+    defaults: { _controller: AkodakimCronTaskBundle:Default:index }
